@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  mysql-development:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: helloworld123
+      MYSQL_DATABASE: testappdb
+    ports:
+      - "3306:3306"
+    expose:
+      - 3306
