@@ -21,7 +21,7 @@ module.exports = [
         }
 
         return res.status(StatusCodes.CREATED).json({
-            'lessonId': rows.insertId
+            idLesson: rows.insertId
         })
     }
 ]

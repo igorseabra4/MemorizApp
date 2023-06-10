@@ -1,5 +1,4 @@
 const { StatusCodes } = require('http-status-codes')
-const { getCollectionCardCount } = require('../services/getCollectionCardCount')
 const { CardStatus } = require('../enums/CardStatus')
 const db = require('../../../database/db')()
 
@@ -35,8 +34,7 @@ WHERE C.ID_COLLECTION = ? AND C.ID_LESSON = ? AND C.ID_CARD_STATUS = ?`, [req.co
             return res.json({
                 name: req.collection.name,
                 lessons: lessons,
-                ...req.collection.settings,
-                ...await getCollectionCardCount(req.collection.id)
+                defaultNewCards: req.collection.settings.defaultNewCards
             })
         } catch (err) {
             return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: err })
